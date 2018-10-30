@@ -81,13 +81,11 @@ with open(sys.argv[2],'w') as file:
 	# Sort the occupations as per alphabetical order in name (since tie breaking is in alphabetical order) 
 	# Sort data again to find the top 10 occupations corresponding to certified applications
 	for key, value in sorted(sorted(occupations.items(), key= lambda x: x[0]),key = lambda x : x[1],reverse=True):
-		if ct==end-1:
-			file.write("%s;%d;%3.1f%%"%(key,value,100*value/total_certified_applications_occupation))
-			break
-		else:
-			file.write("%s;%d;%3.1f%%\n"%(key,value,100*value/total_certified_applications_occupation))
+		file.write("%s;%d;%3.1f%%\n"%(key,value,100*value/total_certified_applications_occupation))
 		ct=ct+1
 		
+		if ct==end:
+			break
 
 # Check for number of states in data less than 10
 if len(states)<10:
@@ -100,9 +98,7 @@ with open(sys.argv[3],'w') as file:
 	# Sort the states as per alphabetical order in name (since tie breaking is in alphabetical order) 
 	# Sort data again to find the top 10 states corresponding to certified applications
 	for key, value in sorted(sorted(states.items(), key= lambda x: x[0]),key = lambda x : x[1],reverse=True):
-		if ct==end-1:
-			file.write("%s;%d;%3.1f%%"%(key,value,100*value/total_certified_applications_states))
-			break
-		else:
-			file.write("%s;%d;%3.1f%%\n"%(key,value,100*value/total_certified_applications_states))
+		file.write("%s;%d;%3.1f%%\n"%(key,value,100*value/total_certified_applications_states))
 		ct=ct+1
+		if ct==end:
+			break
