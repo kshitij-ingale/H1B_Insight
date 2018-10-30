@@ -3,7 +3,7 @@ import csv
 
 
 # Read Input file using csv module
-with open(sys.argv[1], newline='\n',encoding='utf-8') as csvfile:
+with open(sys.argv[1], encoding='utf-8') as csvfile:
 	records = csv.DictReader(csvfile, delimiter=';')
 
 # Obtain header from the data to find the labels for required information
